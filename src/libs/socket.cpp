@@ -10,8 +10,8 @@
 #include <netinet/in.h>
 
 Socket::Socket(int domain, int type, int protocol) {
-  this->fileDescriptor = socket(domain, type, htons(protocol));
-  if(this->fileDescriptor < 0) {
+  this->fileDescriptor = socket(domain, type, protocol);
+  if(this->fileDescriptor == -1) {
     std::cerr << "open_socket: Fail to open socket.\n";
     exit(EXIT_FAILURE);
   }

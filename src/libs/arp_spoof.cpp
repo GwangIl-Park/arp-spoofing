@@ -13,8 +13,12 @@ ARPSpoof::ARPSpoof(Socket *socket) {
   memset(this->buffer, 0, BUFFER_SIZE);
 }
 
+ARPSpoof::~ARPSpoof(){}
+
 void ARPSpoof::makeSpoofData() {
-  unsigned char *myMacAddress = getMyMacAddress();
+  unsigned char myMacAddress[MAC_LENGTH];
+  getMyMacAddress(myMacAddress, "eth0");
+  
   EthernetHeader *ethernetHeader = (EthernetHeader*)this->buffer;
   setEthernetHeader(ethernetHeader, this->targetMacAddress, myMacAddress, ETH_P_ARP);
   ARPHeader *arpHeader = (ARPHeader*)this->buffer + sizeof(EthernetHeader);

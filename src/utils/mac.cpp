@@ -6,7 +6,7 @@
 #include "mac.h"
 #include "types.h"
 
-unsigned char* getMyMacAddress(char *interfaceName) {
+void getMyMacAddress(unsigned char *buffer, char *interfaceName) {
   int socketFd = socket(AF_INET, SOCK_DGRAM, 0);
   if(socketFd == -1) {
     exit(EXIT_FAILURE);
@@ -19,7 +19,5 @@ unsigned char* getMyMacAddress(char *interfaceName) {
     exit(EXIT_FAILURE);
   }
 
-  unsigned char buffer[MAC_LENGTH];
   memcpy(buffer, ifr.ifr_hwaddr.sa_data, MAC_LENGTH);
-  return buffer;
 }
