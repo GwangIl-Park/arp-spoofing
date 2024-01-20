@@ -14,8 +14,7 @@ void setARPHeader(
     unsigned char *senderProtocolAddress,
     unsigned char *targetHardwareAddress,
     unsigned char *targetProtocolAddress
-  )
-{
+  ) {
   arpHeader->hardwareType = htons(hardwareType);
   arpHeader->protocolType = htons(protocolType);
   arpHeader->hardwareLength = hardwareLength;

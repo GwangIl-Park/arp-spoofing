@@ -1,8 +1,7 @@
 #ifndef _ARP_H
 #define _ARP_H
 
-struct ARPHeader
-{
+struct ARPHeader {
   unsigned short  hardwareType;
   unsigned short  protocolType;
   unsigned char   hardwareLength;

@@ -4,12 +4,13 @@
 #include <sys/socket.h>
 
 #include "socket.h"
+#include "ethernet.h"
+#include "arp.h"
 #include "../utils/types.h"
 
 const int BUFFER_SIZE = sizeof(EthernetHeader) + sizeof(ARPHeader);
 
-class ARPSpoof
-{
+class ARPSpoof {
 private:
   Socket *socket;
 
@@ -23,7 +24,7 @@ public:
   ARPSpoof(Socket *socket);
   virtual ~ARPSpoof();
   void makeSpoofData();
-  void spoof(sockaddr *to);
+  void spoof(sockaddr *to, int duration);
 };
 
 #endif
