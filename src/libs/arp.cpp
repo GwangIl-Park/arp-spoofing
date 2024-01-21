@@ -2,6 +2,7 @@
 #include <cstring>
 
 #include "arp.h"
+#include "../utils/types.h"
 
 void setARPHeader(
     ARPHeader *arpHeader,
@@ -19,9 +20,9 @@ void setARPHeader(
   arpHeader->protocolType = htons(protocolType);
   arpHeader->hardwareLength = hardwareLength;
   arpHeader->protocolLength = protocolLength;
-  arpHeader->operation = operation;
-  memcpy(arpHeader->senderHardwareAddress, senderHardwareAddress, sizeof(uint32_t));
-  memcpy(arpHeader->senderProtocolAddress, senderProtocolAddress, sizeof(uint32_t));
-  memcpy(arpHeader->targetHardwareAddress, targetHardwareAddress, sizeof(uint32_t));
-  memcpy(arpHeader->targetProtocolAddress, targetProtocolAddress, sizeof(uint32_t));
+  arpHeader->operation = htons(operation);
+  memcpy(arpHeader->senderHardwareAddress, senderHardwareAddress, MAC_LENGTH);
+  memcpy(arpHeader->senderProtocolAddress, senderProtocolAddress, IPV4_LENGTH);
+  memcpy(arpHeader->targetHardwareAddress, targetHardwareAddress, MAC_LENGTH);
+  memcpy(arpHeader->targetProtocolAddress, targetProtocolAddress, IPV4_LENGTH);
 }

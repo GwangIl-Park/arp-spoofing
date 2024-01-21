@@ -1,8 +1,11 @@
 #ifndef _TYPES_H
 #define _TYPES_H
 
+#include <unordered_map>
+
 const int MAC_LENGTH = 6;
 const int IPV4_LENGTH = 4;
-const int ARP_REPLY = 0x2;
+
+typedef std::unordered_map<std::string, std::string> strToStrUMap;
 
 #endif

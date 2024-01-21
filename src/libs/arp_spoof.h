@@ -21,10 +21,10 @@ private:
 
   unsigned char destinationIPAddress[IPV4_LENGTH];
 public:
-  ARPSpoof(Socket *socket);
+  ARPSpoof(Socket *socket, unsigned char *targetMacAddress, unsigned char *targetIPAddress, unsigned char *destinationIPAddress);
   virtual ~ARPSpoof();
   void makeSpoofData();
-  void spoof(sockaddr *to, int duration);
+  void spoof(sockaddr_ll *to, int duration);
 };
 
 #endif

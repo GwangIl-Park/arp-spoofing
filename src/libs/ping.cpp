@@ -6,9 +6,9 @@
 #include "icmp.h"
 #include "socket.h"
 
-void ping(Socket *socket, sockaddr *to) {
+void ping(Socket *socket, sockaddr_in *to) {
   EchoRequest echoRequest;
   setEchoRequest(&echoRequest);
 
-  socket->sendTo(to, (unsigned char*)&echoRequest, sizeof(EchoRequest));
+  socket->sendTo((sockaddr*)to, sizeof(sockaddr_in), (unsigned char*)&echoRequest, sizeof(EchoRequest));
 }

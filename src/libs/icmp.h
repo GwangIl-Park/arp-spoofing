@@ -1,6 +1,8 @@
 #ifndef _ICMP_H
 #define _ICMP_H
 
+#include <unistd.h>
+
 struct ICMPHeader {
   unsigned char   type;
   unsigned char   code;
@@ -12,8 +14,8 @@ struct EchoRequest : public ICMPHeader {
   unsigned short  seq;
 };
 
-void setEchoRequest(
-    EchoRequest     *echoRequest
-);
+void setEchoRequest(EchoRequest *echoRequest);
+
+uint32_t makeEchoRequestChecksum(unsigned char *data);
 
 #endif

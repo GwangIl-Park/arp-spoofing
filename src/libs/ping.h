@@ -4,6 +4,6 @@
 #include <sys/socket.h>
 #include "socket.h"
 
-void ping(Socket *socket, sockaddr *to);
+void ping(Socket *socket, sockaddr_in *to);
 
 #endif
