@@ -52,7 +52,8 @@ int main(int argc, char *argv[]) {
   ARPSpoof *arpSpoofA = new ARPSpoof(socketForSpoofA, targetSocketAddressA.sll_addr, addressAChar, addressBChar);
   arpSpoofA->spoof(&targetSocketAddressA,1);
 
-
+  delete arpSpoofA;
+  delete socketForSpoofA;
 
   return 0;
 }
