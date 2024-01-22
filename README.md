@@ -112,6 +112,10 @@ C:\Users\rkasu>arp -a
   239.255.255.250       01-00-5e-7f-ff-fa     정적
 ```
 
+- 공격 대상 2에 ping을 날렸으나 공격자의 mac주소로 패킷이 나가는 모습
+
+![image](https://github.com/GwangIl-Park/arp-spoofing/assets/40749130/836fcff7-d1b5-452c-9210-16ce48d6a0e5)
+
 # TODO
 
 1. 설정 파일 최적화
