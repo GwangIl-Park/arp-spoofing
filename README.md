@@ -37,8 +37,8 @@ sudo ./arp_spoof
 # 테스트
 
 - 환경
-  - 공격자 : ubuntu (192.168.56.114, 08:00:27:b5:4c:71)
-  - 공격 대상 : windows 10 (192.168.56.1, 0a:00:27:00:00:09)
+  - 공격자 : ubuntu (192.168.56.114, 08:00:27:b5:4c:XX)
+  - 공격 대상 : windows 10 (192.168.56.1, 0a:00:27:00:00:XX)
   - 공격 대상 2 IP : 192.168.56.110
 
 1. 초기 상태 확인
@@ -46,8 +46,8 @@ sudo ./arp_spoof
 - 공격자 arp 테이블
 ```
 gipark@gipark-VirtualBox:~/arp-spoofing$ arp -a
-? (10.100.#.#) at 52:54:00:12:35:00 [ether] on enp0s3
-_gateway (10.100.2.1) at 52:54:00:12:35:00 [ether] on enp0s3
+? (10.100.#.#) at 52:54:00:12:35:XX [ether] on enp0s3
+_gateway (10.100.2.1) at 52:54:00:12:35:XX [ether] on enp0s3
 ? (169.254.169.254) at <incomplete> on enp0s3
 ```
 
@@ -58,11 +58,11 @@ C:\Users\rkasu>arp -a
 인터페이스: 192.168.56.1 --- 0x9
   인터넷 주소           물리적 주소           유형
   192.168.56.255        ff-ff-ff-ff-ff-ff     정적
-  224.0.0.22            01-00-5e-00-00-16     정적
-  224.0.0.251           01-00-5e-00-00-fb     정적
-  224.0.0.252           01-00-5e-00-00-fc     정적
-  239.192.152.143       01-00-5e-40-98-8f     정적
-  239.255.255.250       01-00-5e-7f-ff-fa     정적
+  224.0.0.22            01-00-5e-00-00-XX     정적
+  224.0.0.251           01-00-5e-00-00-XX     정적
+  224.0.0.252           01-00-5e-00-00-XX     정적
+  239.192.152.143       01-00-5e-40-98-XX     정적
+  239.255.255.250       01-00-5e-7f-ff-XX     정적
 ```
 
 
@@ -72,27 +72,28 @@ C:\Users\rkasu>arp -a
 a. 공격 과정 (1) ping
 
 - ping을 보내면서 arp request가 함께 발생
-![image](https://github.com/GwangIl-Park/arp-spoofing/assets/40749130/396fa69a-3fcd-40d4-97ba-db9e922ec10c)
+<img width="778" alt="image" src="https://github.com/GwangIl-Park/arp-spoofing/assets/40749130/9a905585-1de8-4a18-a7f5-377f9f652225">
 
 - arp reply
-![image](https://github.com/GwangIl-Park/arp-spoofing/assets/40749130/bd8a01e0-5540-42c1-a1a4-3e3bdd9a62e1)
+<img width="580" alt="image" src="https://github.com/GwangIl-Park/arp-spoofing/assets/40749130/2a1e97a3-1cf1-4961-b900-a2b4890740d6">
 
 b. 공격 과정 (2) arp spoof
 
 - arp spoof 패킷
-![image](https://github.com/GwangIl-Park/arp-spoofing/assets/40749130/7c6ad62a-82f7-41fa-bfde-ef0aefb988cd)
+<img width="630" alt="image" src="https://github.com/GwangIl-Park/arp-spoofing/assets/40749130/9f422da3-626a-4714-be53-d69e16b830ed">
 
-- 패킷 내용 (공격대상2 (192.168.56.110) 의 MAC 주소가 공격자의 MAC 주소 (08:00:27:b5:4c:71)라고 알림)
-![image](https://github.com/GwangIl-Park/arp-spoofing/assets/40749130/369ea38d-dacd-4bb5-879f-d16470e4e94f)
+- 패킷 내용 (공격대상2 (192.168.56.110) 의 MAC 주소가 공격자의 MAC 주소 (08:00:27:b5:4c:XX)라고 알림)
+<img width="363" alt="image" src="https://github.com/GwangIl-Park/arp-spoofing/assets/40749130/e060ac84-2565-4ab4-8126-a3a429c16fec">
+
 
 1. 결과
 
 - 공격자 arp 테이블에 공격 대상 정보 추가
 ```
 gipark@gipark-VirtualBox:~/arp-spoofing$ arp -a
-? (10.100.2.2) at 52:54:00:12:35:00 [ether] on enp0s3
-? (192.168.56.1) at 0a:00:27:00:00:09 [ether] on enp0s8
-_gateway (10.100.2.1) at 52:54:00:12:35:00 [ether] on enp0s3
+? (10.100.2.2) at 52:54:00:12:35:XX [ether] on enp0s3
+? (192.168.56.1) at 0a:00:27:00:00:XX [ether] on enp0s8
+_gateway (10.100.2.1) at 52:54:00:12:35:XX [ether] on enp0s3
 ? (169.254.169.254) at <incomplete> on enp0s3
 ```
 
@@ -102,19 +103,20 @@ C:\Users\rkasu>arp -a
 
 인터페이스: 192.168.56.1 --- 0x9
   인터넷 주소           물리적 주소           유형
-  192.168.56.110        08-00-27-b5-4c-71     동적
-  192.168.56.114        08-00-27-b5-4c-71     동적
+  192.168.56.110        08-00-27-b5-4c-XX     동적
+  192.168.56.114        08-00-27-b5-4c-XX     동적
   192.168.56.255        ff-ff-ff-ff-ff-ff     정적
-  224.0.0.22            01-00-5e-00-00-16     정적
-  224.0.0.251           01-00-5e-00-00-fb     정적
-  224.0.0.252           01-00-5e-00-00-fc     정적
-  239.192.152.143       01-00-5e-40-98-8f     정적
-  239.255.255.250       01-00-5e-7f-ff-fa     정적
+  224.0.0.22            01-00-5e-00-00-XX     정적
+  224.0.0.251           01-00-5e-00-00-XX     정적
+  224.0.0.252           01-00-5e-00-00-XX     정적
+  239.192.152.143       01-00-5e-40-98-XX     정적
+  239.255.255.250       01-00-5e-7f-ff-XX     정적
 ```
 
 - 공격 대상 2에 ping을 날렸으나 공격자의 mac주소로 패킷이 나가는 모습
 
-![image](https://github.com/GwangIl-Park/arp-spoofing/assets/40749130/836fcff7-d1b5-452c-9210-16ce48d6a0e5)
+<img width="453" alt="image" src="https://github.com/GwangIl-Park/arp-spoofing/assets/40749130/c074ce38-503e-4476-9696-9940e681832b">
+
 
 # TODO
 
