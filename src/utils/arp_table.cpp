@@ -25,6 +25,7 @@ strToStrUMap setARPTableFromARPFile() {
     return arpTable;
   } else {
     std::cerr << "Failed to open /proc/net/arp" << std::endl;
+    exit(1);
   }
 }
 

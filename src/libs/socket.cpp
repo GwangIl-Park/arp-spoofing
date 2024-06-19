@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <sys/ioctl.h>
-#include <unistd.h>
 #include <linux/if_arp.h>
 #include <cstring>
 #include <netinet/in.h>

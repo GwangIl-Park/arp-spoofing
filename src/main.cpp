@@ -19,14 +19,14 @@ int main(int argc, char *argv[]) {
   while(true) {
     std::string macAddress = getMacAddressByIPFromARPTable(getSettings().targetIPAddressA);
     if(macAddress == "") {
-      std::cout << "MAC Address is Null" << std::endl;
+      std::cout << "MAC Address is Null : IP > " << getSettings().targetIPAddressA << std::endl;
       Socket *socketForPing = new Socket(AF_INET, SOCK_RAW, IPPROTO_ICMP);
       sockaddr_in pingDestAddress;
       setInternetSocketAddress(&pingDestAddress, getSettings().targetIPAddressA.c_str(), 0);
       ping(socketForPing, &pingDestAddress);
     } else {
       targetMacAddressA = macAddress;
-      std::cout << targetMacAddressA << std::endl;
+      std::cout << "MAC Address of " << getSettings().targetIPAddressA << " is " << targetMacAddressA << std::endl;
       break;
     }
   }

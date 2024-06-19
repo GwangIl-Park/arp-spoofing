@@ -5,9 +5,10 @@
 #include <sys/socket.h>
 #include <linux/if_packet.h>
 #include <arpa/inet.h>
+#include <unistd.h>
 
 class Socket {
-private:
+protected:
   int fileDescriptor;
 public:
   Socket(int domain, int type, int protocol);
